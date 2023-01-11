@@ -1,4 +1,14 @@
-export default function Home() {
+import { useTina } from "tinacms/dist/react";
+import client from "../.tina/__generated__/client";
+import { TinaMarkdown } from "tinacms/dist/rich-text";
+import type { TinaMarkdownContent } from "tinacms/dist/rich-text";
+
+export default function Home(props) {
+  const { data } = useTina<{ page: { body: TinaMarkdownContent } }>({
+    query: props.query,
+    variables: props.variables,
+    data: props.data,
+  });
   return (
     <>
       <p className="text-hotPink">
@@ -13,6 +23,18 @@ export default function Home() {
         dolores, expedita pariatur eius veritatis quia repellendus distinctio
         quasi praesentium? Voluptas.
       </p>
+
+      <TinaMarkdown content={data.page.body} />
     </>
   );
 }
+export const getStaticProps = async () => {
+  const tinaProps = await client.queries.page({ relativePath: "about.md" });
+  return {
+    props: {
+      data: tinaProps.data,
+      query: tinaProps.query,
+      variables: tinaProps.variables,
+    },
+  };
+};

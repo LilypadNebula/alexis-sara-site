@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.cute-gradient {
+  background-image: linear-gradient(to top, #fad0c4 0%, #f5a9b8 100%);
+}

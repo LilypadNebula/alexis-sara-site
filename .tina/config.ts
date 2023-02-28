@@ -20,24 +20,49 @@ export default defineConfig({
   schema: {
     collections: [
       {
-        name: "page",
-        label: "Pages",
-        path: "content/pages",
-        format: "md",
+        name: "home_page",
+        label: "Home Page",
+        path: "content/home-page",
+        format: "json",
         fields: [
-          { type: "image", name: "image", label: "Page Image" },
+          {
+            type: "image",
+            name: "first_image",
+            label: "First Image",
+          },
+          {
+            type: "string",
+            name: "first_image_desc",
+            label: "First Image Description",
+          },
+          {
+            type: "image",
+            name: "second_image",
+            label: "Second Image",
+          },
+          {
+            type: "string",
+            name: "second_image_desc",
+            label: "Second Image Description",
+          },
           { type: "rich-text", name: "body", label: "Body", isBody: true },
         ],
         ui: {
-          router: ({ document }) => {
-            if (document._sys.filename === "home") {
-              return `/`;
-            }
-            if (document._sys.filename === "about") {
-              return `/about`;
-            }
-            return undefined;
-          },
+          router: () => "/",
+          global: true,
+        },
+      },
+      {
+        name: "about_page",
+        label: "About Page",
+        path: "content/about-page",
+        format: "json",
+        fields: [
+          { type: "rich-text", name: "body", label: "Body", isBody: true },
+        ],
+        ui: {
+          router: () => "/about",
+          global: true,
         },
       },
       {

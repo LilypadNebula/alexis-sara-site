@@ -64,6 +64,29 @@ export default defineConfig({
         },
       },
       {
+        name: "contact_page",
+        label: "Contact Page",
+        path: "content/contact-page",
+        format: "json",
+        fields: [
+          { type: "string", name: "tumblr", label: "Tumblr" },
+          {
+            type: "string",
+            name: "email",
+            label: "Email",
+            ui: {
+              validate: (value: string) => {
+                if (!value.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/))
+                  return "Must be an email";
+              },
+            },
+          },
+        ],
+        ui: {
+          router: () => "/contact",
+        },
+      },
+      {
         name: "project",
         label: "Projects",
         format: "json",

@@ -3,7 +3,6 @@ import client from "../.tina/__generated__/client";
 import { Project } from "../.tina/__generated__/types";
 
 export default function Projects({ projects }: { projects: Project[] }) {
-  console.log(projects);
   return (
     <div className="flex flex-wrap justify-center items-center gap-6">
       {projects.map((project) => (

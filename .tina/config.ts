@@ -49,7 +49,6 @@ export default defineConfig({
         ],
         ui: {
           router: () => "/",
-          global: true,
         },
       },
       {
@@ -62,7 +61,6 @@ export default defineConfig({
         ],
         ui: {
           router: () => "/about",
-          global: true,
         },
       },
       {

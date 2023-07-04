@@ -47,7 +47,6 @@ export const getStaticProps = async () => {
   const tinaProps = await client.queries.home_page({
     relativePath: "index.json",
   });
-  console.log(tinaProps.data);
   return {
     props: {
       data: tinaProps.data,

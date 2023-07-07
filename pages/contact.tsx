@@ -17,7 +17,7 @@ export default function About(
   ) as string[];
   return (
     <div className="text-white">
-      <a href={`https://tumblr.com/${data.contact_page.tumblr}`}> Tumblr </a>
+      <a href={data.contact_page.tumblr || "https://tumblr.com"}> Tumblr </a>
       <p>
         Email: {emailStart}
         <span className="hidden">
